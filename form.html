@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="shortcut icon" href="Resources/fsulogo.jpg" type="image/x-icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logoAndTitleHolder">
+            <div class="logoHolder"></div>
+            <h1>FSU TASK TRACKER</h1>
+        </div>
+        <div class="userHolder">
+            <div class="profilePicHolder"></div>
+            <h4>Hello Aadi!</h4>
+        </div>
+    </div>
+    <div class="body">
+        <div class="adminFilled">
+            <input type="text" name="taskTitle" id="taskTitle" placeholder="Task Title" required>
+            <select name="catagorySelection" id="catagorySelection" required>
+                <option value="NULL">--Select Catagory--</option>
+                <option value="FSUExes">FSU Executives</option>
+                <option value="FSUMembers">FSU Members</option>
+                <option value="ExtendedTeam">Extended Team</option>
+            </select>
+            <select name="individualName" id="individualName" required>
+                <option value="null">--Select Option--</option>
+            </select>
+            <textarea name="taskDescription" id="taskDescription" placeholder="Task Description" required></textarea>
+            <label for="Deadline">Deadline:</label> <input type="date" name="Deadline" id="Deadline" placeholder="Deadline" required>
+            <button type="button" onclick="document.location='index.html'">Add Task</button>
+        </div>
+        <div class="workerFilled">
+            <input type="number" name="PercentageDone" id="PercentageDone" placeholder="Percentage Done">
+            <input type="number" name="Progress" id="Progress" placeholder="Progress">
+            <input type="text" name="RemainingStuff" id="RemainingStuff" placeholder="Remaining Stuff">
+            <input type="text" name="PeopleWorking" id="PeopleWorking" placeholder="People Working">
+            <button type="button">Update Task</button>
+        </div>
+    </div>
+</body>
+<script>
+    const catagorySelection = document.getElementById("catagorySelection");
+    const individualName = document.getElementById("individualName");
+
+    const itemData = {
+        FSUExes:[
+            {value:"Swoyam",Text:"Swoyam Shrestha"},
+            {value:"Albert",Text:"Albert Dhakal"},
+            {value:"Secretary",Text:"Secretary Jyu"}
+        ],
+        FSUMembers:[
+            {value:"khaiIDK",Text:"Khai IDK"}
+        ],
+        ExtendedTeam:[
+            {value:"Automation",Text:"Automation Team"},
+            {value:"Web",Text:"Web Team"},
+            {value:"Network",Text:"Network Team"},
+            {value:"Graphics",Text:"Graphics Team"},
+            {value:"Map",Text:"Map Team"}
+        ]
+    }
+    catagorySelection.addEventListener('change',()=>{
+        const selectedCatagory = catagorySelection.value;
+        individualName.innerHTML="<option value='null'>--Select Option--</option>";
+
+        if(selectedCatagory && itemData[selectedCatagory]){
+            itemData[selectedCatagory].forEach((element) => {
+                let newOption = document.createElement("option");
+                newOption.value = element.value;
+                newOption.textContent = element.Text;
+                individualName.appendChild(newOption);
+            });
+        }
+    });
+</script>
+</html>
