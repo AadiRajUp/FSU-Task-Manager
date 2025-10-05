@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link rel="shortcut icon" href="Resources/fsulogo.jpg" type="image/x-icon">
-
+    <link rel="shortcut icon" href="{{url_for('static', filename='../Resources/fsulogo.jpg')}}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
-    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='form.css')}}">
 </head>
 <body>
     <div class="navbar">
@@ -20,7 +19,7 @@
         </div>
     </div>
     <div class="body">
-        <div class="adminFilled">
+        <form action="{{url_for('taskHandler.postTask')}}" method="POST" class="adminFilled">
             <input type="text" name="taskTitle" id="taskTitle" placeholder="Task Title" required>
             <select name="catagorySelection" id="catagorySelection" required>
                 <option value="NULL">--Select Catagory--</option>
@@ -32,8 +31,8 @@
                 <option value="null">--Select Option--</option>
             </select>
             <textarea name="taskDescription" id="taskDescription" placeholder="Task Description" required></textarea>
-            <label for="Deadline">Deadline:</label> <input type="date" name="Deadline" id="Deadline" placeholder="Deadline" required>
-            <button type="button" onclick="document.location='index.html'">Add Task</button>
+            <label for="Deadline">Deadline:</label> <input type="date" name="deadline" id="Deadline" placeholder="Deadline" required>
+            <button type="submit">Add Task</button>
         </div>
         <div class="workerFilled">
             <input type="number" name="PercentageDone" id="PercentageDone" placeholder="Percentage Done">

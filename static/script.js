@@ -1,24 +1,28 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
         const addButton = document.querySelector('.add');
         const contentHolder = document.getElementById('contentHolder');
-        addButton.addEventListener('click',()=>{
+        const data = outputData();
+        console.log(data);
+        function loadAllData(){
+            contentHolder.innerHTML="";
+            for(let i =0 ;i<data.length;i++){
             contentHolder.innerHTML+=`<div class="contentBox">
                 <div class="title">
-                    <h3>$TaskName$</h3>
-                    <h3>-$TeamName$</h3>
+                    <h3>${data[i][1]}</h3>
+                    <h3>-${data[i][2]}</h3>
                 </div>
                 <div class="progressBar">
                     <div class="progress"></div>
                 </div>
                 <div class="numericData">
-                    <h6>$Time Remaining$</h6>
-                    <h6>$Progress$</h6>
+                    <h6>${data[i][4]}</h6>
+                    <h6>${data[i][7]}</h6>
                 </div>
                 <div class="extraContent">
                     <hr>
                     <div>
                         <div class="taskDetails">
-                            <p>Task Description: $Description$</p>
+                            <p>Task Description: ${data[i][5]}</p>
                             <p>Progress: $Progress$</p>
                             <p>Remaining: $Remaining$</p>
                         </div>
@@ -32,7 +36,8 @@
             
             // Add click event listener to the newly created content box
             addToggleEventListeners();
-        });
+            }
+        }
         
         // Function to add toggle event listeners to all content boxes
         function addToggleEventListeners() {
@@ -58,5 +63,7 @@
         }
         
         // Initialize event listeners for any existing content boxes
+        loadAllData();
         addToggleEventListeners();
+        
     }); 

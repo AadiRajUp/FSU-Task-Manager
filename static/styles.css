@@ -19,7 +19,7 @@
         height: 10dvh;
         width: 10dvh;
         margin: 2dvh;
-        background-image: url(./Resources/fsulogo.jpg);
+        background-image: url("./images/fsulogo.jpg");
         background-size: cover;
         background-color: #ccc;
         float: left;
@@ -40,7 +40,7 @@
         height: 8dvh;
         width: 8dvh;
         background-color: #ccc;
-        background-image: url('./Resources/aadi.jpg');
+        background-image: url('./images/aadi.jpg');
         background-size: cover;
         margin-right: 1dvw;
         border-radius: 50%;

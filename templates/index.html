@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" href="Resources/fsulogo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/fsulogo.jpg')}}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Tracker</title>
 </head>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
 <body>
     <div class="navbar">
         <div class="logoAndTitleHolder">
             <div class="logoHolder"></div>
             <h1>FSU TASK TRACKER</h1>
         </div>
-        <div class="userHolder">
+        <div class="userHolder" onclick="document.location='{{url_for('login')}}'">
             <div class="profilePicHolder"></div>
             <h4>Hello Aadi!</h4>
         </div>
@@ -24,10 +24,19 @@
         </div>
         <div class="sidebar">
             <div class="buttons">
-                <button class="add" type="button" onclick="document.location='form.html'">+</button>
+                <button class="add" type="button" onclick="document.location='{{url_for('form')}}'">+</button>
             </div>
         </div>
     </div>
 </body>
-<script src="script.js"></script>
+<script>
+    function outputData(){
+    return {{ client_data|tojson }};
+    }
+</script>
+<script src="{{url_for('static', filename='script.js')}}"></script>
+
+<script>
+       // window.loadAllData();
+</script>
 </html>
