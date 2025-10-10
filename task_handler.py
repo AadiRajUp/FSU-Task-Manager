@@ -1,4 +1,4 @@
-from flask import Flask, render_template,url_for,Blueprint,request,redirect
+from flask import Flask, render_template,url_for,Blueprint,request,redirect,session
 import pymysql
 from connect import connectDB
 task_bp = Blueprint('taskHandler',__name__)
@@ -17,7 +17,7 @@ def postTask():
 
     print("Uploading Data to the database")
     query1 = f"""
-    INSERT INTO task_table (`task_name`,`task_assigned_to`,`task_assigned_by`,`task_deadline`,`task_description`) VALUES("{taskTitle}","{individualName}","Admin","{deadline}","{taskDescription}")
+    INSERT INTO task_table (`task_name`,`task_assigned_to`,`task_assigned_by`,`task_deadline`,`task_description`) VALUES("{taskTitle}","{individualName}","{session.get("username")}","{deadline}","{taskDescription}")
     """
     cur.execute(query1)
     conn.commit()

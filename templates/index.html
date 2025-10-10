@@ -15,7 +15,7 @@
         </div>
         <div class="userHolder" onclick="document.location='{{url_for('login')}}'">
             <div class="profilePicHolder"></div>
-            <h4>Hello Aadi!</h4>
+            <h4>Hello {{user_name}}!</h4>
         </div>
     </div>
     <div class="body">
@@ -24,7 +24,7 @@
         </div>
         <div class="sidebar">
             <div class="buttons">
-                <button class="add" type="button" onclick="document.location='{{url_for('form')}}'">+</button>
+                <button class="add" type="button" onclick="{{url_for('form')}}">+</button>
             </div>
         </div>
     </div>
@@ -33,10 +33,13 @@
     function outputData(){
     return {{ client_data|tojson }};
     }
+    function editData(i,j){
+        document.location= `{{url_for('edit.edit')}}?task_id=${i}&task_id_db=${j}`;
+    }
 </script>
 <script src="{{url_for('static', filename='script.js')}}"></script>
 
 <script>
-       // window.loadAllData();
+       
 </script>
 </html>

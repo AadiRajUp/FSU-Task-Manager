@@ -1,0 +1,123 @@
+button[type="button"] {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+/* Form Container Styling */
+.editBody {
+    background: white;
+    background-image: url('./Resources/fsulogo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-blend-mode: overlay;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 5dvh;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.editBody::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./images/fsulogo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    opacity: 0.05;
+    border-radius: 15px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.editBody > * {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+/* Input and Select Styling */
+.editBody input,
+.editBody select,
+.editBody textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.editBody input:focus
+{
+    outline: none;
+    border-color: #3498db;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Label styling */
+.editBody label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Submit button styling - keeping the green button */
+.editBody button[type="submit"],
+.editBody .submit-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.editBody button[type="submit"]:hover,
+.editBody .submit-btn:hover {
+    background: linear-gradient(135deg, #229954, #27ae60);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+}
+
+.editBody button[type="submit"]:active,
+.editBody .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

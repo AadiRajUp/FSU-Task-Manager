@@ -1,6 +1,6 @@
 import pymysql
 DB_NAME = "FSU_TASK_TRACKER_DB"
-USER_ID_TABLE = "UID_TABLE" 
+USER_ID_TABLE = "uid_table" 
 TASK_ID_TABLE = "TASK_TABLE"
 
 def connectDB():
