@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-        const addButton = document.querySelector('.add');
         const contentHolder = document.getElementById('contentHolder');
         const data = outputData();
         localStorage.setItem("Data",JSON.stringify(data));
@@ -32,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="assignedBy">Assigned By: ${data[i][3]}</div>
                         </div>
                     </div>
-                    <div class="editButtonHolder">
+                    <div class="ButtonHolder">
+                            <button type="button" class="deleteButton" onclick="deleteData(${i},${data[i][0]})">Delete</button>
                             <button type="button" class="editButton" onclick="editData(${i},${data[i][0]})">Edit</button>
                     </div>
                 </div>

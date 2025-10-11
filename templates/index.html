@@ -24,7 +24,7 @@
         </div>
         <div class="sidebar">
             <div class="buttons">
-                <button class="add" type="button" onclick="{{url_for('form')}}">+</button>
+                <button class="add" type="button" onclick="document.location='{{url_for('taskHandler.postTask')}}'">+</button>
             </div>
         </div>
     </div>
@@ -35,6 +35,11 @@
     }
     function editData(i,j){
         document.location= `{{url_for('edit.edit')}}?task_id=${i}&task_id_db=${j}`;
+    }
+    function deleteData(i,j){
+        if(confirm("Are you sure you want to delete this task?")){
+            document.location= `{{url_for('taskHandler.deleteTask')}}?task_id=${i}&task_id_db=${j}`;
+        }
     }
 </script>
 <script src="{{url_for('static', filename='script.js')}}"></script>

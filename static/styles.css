@@ -139,13 +139,59 @@
     }
     
 
-.editButtonHolder{
+.deleteButtonHolder{
     display:flex;
     flex-direction: row-reverse;
     width: 100%;
 }
 
     /* CSS */
+.deleteButton {
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #ae2727;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(174, 39, 39, 0.15) 0 4px 9px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.deleteButton:hover {
+  background-color: #842d1e;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: .35s;
+}
+
+.deleteButton:active {
+  transform: translateY(2px);
+  transition-duration: .35s;
+}
+
+.deleteButton:hover {
+  box-shadow: rgba(182, 35, 35, 0.2) 0 6px 12px;
+}
 .editButton {
   appearance: none;
   backface-visibility: hidden;
