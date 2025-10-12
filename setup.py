@@ -1,10 +1,8 @@
 import pymysql
+from connect import connectDB,DB_NAME,USER_ID_TABLE,TASK_ID_TABLE,ARCHIVE_TABLE
 
-DB_NAME = "FSU_TASK_TRACKER_DB"
-USER_ID_TABLE = "UID_TABLE" 
-TASK_ID_TABLE = "TASK_TABLE"
-def connectServer():
-    conn = pymysql.connect(host="localhost",user="root",password="")
+def letThereBeLight():
+    conn = connectDB()
     cur = conn.cursor()
 
 
@@ -55,14 +53,30 @@ def connectServer():
     task_description TEXT NOT NULL,
     task_progress TEXT,
     task_remaining TEXT,
-    task_percentage TINYINT UNSIGNED)
+    task_percentage TINYINT UNSIGNED,
+    task_people_working varchar(255)
+    )
+    """
+    cur.execute(query1)
+    output = cur.fetchall()
+    print(output)
+    # Archive Table
+    print("Creating the Archive table")
+
+    query1 = f"""
+    CREATE TABLE {ARCHIVE_TABLE}(
+	task_id INT PRIMARY KEY NOT NULL,
+	task_name varchar(255) NOT NULL,
+	task_assigned_to varchar(255) NOT NULL,
+    task_assigned_by varchar(255) NOT NULL,
+    task_description TEXT NOT NULL
+    )
     """
     cur.execute(query1)
     output = cur.fetchall()
     print(output)
 
-
     conn.close()
 
 if __name__=="__main__":
-    connectServer()
+    letThereBeLight()

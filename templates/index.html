@@ -18,13 +18,32 @@
             <h4>Hello {{user_name}}!</h4>
         </div>
     </div>
+    <form action="" method="post" class="sortHolder">
+        <div>
+            <label for="taskType">Task type:</label>
+            <select name="taskType" id="taskType">
+                <option value="all">All</option>
+                <option value="task_assigned_to">Assigned to me</option>
+                <option value="task_assigned_by">Assigned by me</option>
+            </select>
+            </div>
+            <div>
+            <label for="sortBy">Sort By:</label>
+            <select name="sortBy" id="sortBy">
+                <option value="(SELECT NULL)">Default</option>
+                <option value="task_deadline">Due Date</option>
+                <option value="task_percentage">Percentage Finished</option>
+            </select>
+        </div>
+        <button type="submit"></button>
+    </form>
     <div class="body">
         <div class="contentHolder" id="contentHolder">
-            
+            <!-- JS will inject content here -->
         </div>
         <div class="sidebar">
             <div class="buttons">
-                <button class="add" type="button" onclick="document.location='{{url_for('taskHandler.postTask')}}'">+</button>
+                <button class="add" type="button" onclick="document.location='{{url_for('form')}}'">+</button>
             </div>
         </div>
     </div>
