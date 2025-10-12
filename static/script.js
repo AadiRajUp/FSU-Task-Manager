@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="ButtonHolder">
                             <button type="button" class="deleteButton" onclick="deleteData(${i},${data[i][0]})">Delete</button>
-                            <button type="button" class="finishButton" onclick="deleteData(${i},${data[i][0]})">Finished</button>
+                            <button type="button" class="finishButton" onclick="finishData(${i},${data[i][0]})">Finished</button>
                             <button type="button" class="editButton" onclick="editData(${i},${data[i][0]})">Edit</button>
                     </div>
                 </div>

@@ -18,7 +18,7 @@
             <h4>Hello {{user_name}}!</h4>
         </div>
     </div>
-    <form action="" method="post" class="sortHolder">
+    <div class="sortHolder">
         <div>
             <label for="taskType">Task type:</label>
             <select name="taskType" id="taskType">
@@ -30,13 +30,13 @@
             <div>
             <label for="sortBy">Sort By:</label>
             <select name="sortBy" id="sortBy">
-                <option value="(SELECT NULL)">Default</option>
+                <option value="default">Default</option>
                 <option value="task_deadline">Due Date</option>
                 <option value="task_percentage">Percentage Finished</option>
             </select>
         </div>
-        <button type="submit"></button>
-    </form>
+        <button type="button" onclick="sortData()">sort</button>
+    </div>
     <div class="body">
         <div class="contentHolder" id="contentHolder">
             <!-- JS will inject content here -->
@@ -55,10 +55,19 @@
     function editData(i,j){
         document.location= `{{url_for('edit.edit')}}?task_id=${i}&task_id_db=${j}`;
     }
+    function finishData(i,j){
+        document.location= `{{url_for('archive.archiveTask')}}?task_id=${i}&task_id_db=${j}`;
+    }
     function deleteData(i,j){
         if(confirm("Are you sure you want to delete this task?")){
             document.location= `{{url_for('taskHandler.deleteTask')}}?task_id=${i}&task_id_db=${j}`;
         }
+    }
+    function sortData(){
+        const taskType = document.getElementById("taskType").value;
+        const sortBy = document.getElementById("sortBy").value;
+        console.log("Sorting by:", sortBy, "Task type:", taskType);
+        document.location=`{{url_for('index')}}?task_type=${taskType}&sort_by=${sortBy}`;
     }
 </script>
 <script src="{{url_for('static', filename='script.js')}}"></script>

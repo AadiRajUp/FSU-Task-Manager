@@ -5,6 +5,7 @@ from task_handler import task_bp
 from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
+from archive import archive_bp
 app = Flask(__name__)
 app.secret_key = "##&&#*#(@&123hello"
 app.config["SESSION_PERMANENT"]= True
@@ -18,7 +19,9 @@ def index():
     if not session.get("username"):
         return redirect(url_for('auth.login'))
     #session.permanent=True
-    output = fetchAll()
+    task_type = request.args.get('task_type')
+    sort_by= request.args.get('sort_by')
+    output = fetchAll(task_type,sort_by)
     return render_template('index.html',client_data = output,user_name = session.get("username"))
 
 @app.route('/form')
@@ -34,5 +37,6 @@ def login():
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
+app.register_blueprint(archive_bp)
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
