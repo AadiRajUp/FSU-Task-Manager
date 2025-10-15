@@ -27,12 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p>Remaining: ${data[i][7]}</p>
                         </div>
                         <div class="peopleDetails">
-                            <div class="peopleWorking">People Working: $People Working$</div>
+                            <div class="peopleWorking">People Working: ${data[i][9]}</div>
                             <div class="assignedBy">Assigned By: ${data[i][3]}</div>
                         </div>
                     </div>
                     <div class="ButtonHolder">
                             <button type="button" class="deleteButton" onclick="deleteData(${i},${data[i][0]})">Delete</button>
+                            <button type="button" class="finishButton" onclick="finishData(${i},${data[i][0]})">Finished</button>
                             <button type="button" class="editButton" onclick="editData(${i},${data[i][0]})">Edit</button>
                     </div>
                 </div>

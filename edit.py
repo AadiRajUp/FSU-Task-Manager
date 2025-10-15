@@ -19,12 +19,13 @@ def edit():
         percentageDone = request.form["PercentageDone"]
         progress = request.form["Progress"]
         remainingStuff = request.form["RemainingStuff"]
+        peopleWorking = request.form["PeopleWorking"]
         conn = connectDB()
         cur = conn.cursor()
         query1 = f"""
         UPDATE {TASK_ID_TABLE}
-        SET `task_progress`="{progress}",`task_remaining`="{remainingStuff}",`task_percentage`={percentageDone}
-        WHERE task_id = {task_id_db}
+        SET `task_progress`="{progress}",`task_remaining`="{remainingStuff}",`task_percentage`={percentageDone},`task_people_working`="{peopleWorking}"
+        WHERE `task_id` = {task_id_db}
         """
         cur.execute(query1)
         conn.commit()
