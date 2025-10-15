@@ -34,5 +34,6 @@ def login():
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
+
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
