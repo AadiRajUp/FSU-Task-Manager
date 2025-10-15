@@ -22,7 +22,8 @@ def index():
     task_type = request.args.get('task_type')
     sort_by= request.args.get('sort_by')
     output = fetchAll(task_type,sort_by)
-    return render_template('index.html',client_data = output,user_name = session.get("username"))
+
+    return render_template('index.html',client_data = output,user_name = session.get("username"),role=session.get('role'))
 
 @app.route('/form')
 def form():
