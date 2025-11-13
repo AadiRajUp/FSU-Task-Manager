@@ -6,6 +6,7 @@ from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
 from archive import archive_bp
+from completed import completed_bp
 app = Flask(__name__)
 app.secret_key = "##&&#*#(@&123hello"
 app.config["SESSION_PERMANENT"]= True
@@ -33,10 +34,13 @@ def form():
 @app.route('/login')
 def login():
     return render_template('login.html')
-
+@app.route('/completed')
+def completed():
+    return render_template('completed.html')
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
 app.register_blueprint(archive_bp)
+app.register_blueprint(completed_bp)
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
