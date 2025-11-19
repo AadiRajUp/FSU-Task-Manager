@@ -1,11 +1,12 @@
 from flask import Flask, url_for,render_template,Blueprint,request,redirect,session
 from connect import connectDB,USER_ID_TABLE
 import bcrypt
+
+## hey i will change the existing code to make up for the new database system we are using
 login_bp = Blueprint("auth",__name__)
 @login_bp.route("/login", methods = ["GET","POST"])
 def login():
     if request.method == "GET":
-        # ✅ Show the login form
         return render_template('login.html')
     if request.method == "POST":
         username = request.form["username"]

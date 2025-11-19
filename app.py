@@ -5,13 +5,25 @@ from task_handler import task_bp
 from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
 from archive import archive_bp
+
+# base class 
+class Base(DeclarativeBase):
+    pass
+
+
 app = Flask(__name__)
 app.secret_key = "##&&#*#(@&123hello"
+db = SQLAlchemy(model_class=Base)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 app.config["SESSION_PERMANENT"]= True
 app.config["SESSION_TYPE"]='filesystem'
 app.config["PERMANENT_SESSION_LIFETIME"]= timedelta(seconds=200)
 Session(app)
+db.init_app(app)
 
 
 @app.route('/')
