@@ -5,11 +5,11 @@ from task_handler import task_bp
 from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
-from extensions import db
+from extensions import db,migrate
 from sqlalchemy.orm import DeclarativeBase
 from archive import archive_bp
 
-
+from models import *
 
 
 
@@ -23,6 +23,7 @@ app.config["SESSION_TYPE"]='filesystem'
 app.config["PERMANENT_SESSION_LIFETIME"]= timedelta(seconds=200)
 Session(app)
 db.init_app(app)
+migrate.init_app(app,db)
 
 
 @app.route('/')
@@ -50,5 +51,25 @@ app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
 app.register_blueprint(archive_bp)
+
+########
+# Hey adding some sample user these are dummy unc #
+#######
+tests= [ UID(username="Meyan",password="Meyan123",role="admin"),
+    TASK_TABLE(task_name="Sample Task")]
+with app.app_context():
+    db.create_all()
+
+    for item in tests:
+        try:
+            db.session.add(item)
+            # db.session.add(t)
+            db.session.commit()
+        except Exception as e:  # if alreay add
+            print (e)
+            db.session.rollback()
+            continue
+
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
+    

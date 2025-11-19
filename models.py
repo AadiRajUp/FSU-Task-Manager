@@ -7,5 +7,10 @@ class UID(db.Model):
     password = db.Column(db.String(100), nullable=False)
     role = db.Column(db.String(20), nullable=False)
 
+class TASK_TABLE(db.Model):
+    __tablename__ = 'TASK_TABLE'    
+    id = db.Column(db.Integer, primary_key=True)
+    task_name = db.Column(db.String(100), nullable=False)
+
     def __repr__(self):
-        return f"<UID {self.username}>"
+        return f"<UID {self.task_name}>"
