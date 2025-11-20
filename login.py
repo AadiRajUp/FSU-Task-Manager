@@ -5,7 +5,7 @@ login_bp = Blueprint("auth",__name__)
 @login_bp.route("/login", methods = ["GET","POST"])
 def login():
     if request.method == "GET":
-        # ✅ Show the login form
+    
         return render_template('login.html')
     if request.method == "POST":
         username = request.form["username"]
@@ -24,6 +24,7 @@ def login():
             return render_template('login.html',check_error = True, error_string="Account doesnt exist")
         elif len(output) == 1:
             session["username"]= username
+            session['role'] = output[0][3]
             return redirect(url_for('index'))
         else:
             return render_template('login.html',check_error = True, error_string="Major Bug ask the developers")
