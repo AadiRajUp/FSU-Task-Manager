@@ -6,6 +6,9 @@ import bcrypt
 ## hey i will change the existing code to make up for the new database system we are using
 login_bp = Blueprint("auth",__name__)
 @login_bp.route("/login", methods = ["GET","POST"])
+
+# the first login function
+
 def login():
     if request.method == "GET":
         return render_template('login.html')
@@ -32,3 +35,4 @@ def login():
             session["username"]= username
             session['role'] = user.role
             return redirect(url_for('index'))
+
