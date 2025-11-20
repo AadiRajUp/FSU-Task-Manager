@@ -2,25 +2,32 @@ from flask import session
 from flask import Blueprint
 from connect import connectDB
 from connect import DB_NAME,TASK_ID_TABLE, USER_ID_TABLE
-def fetchAll(taskType,sortBy,tableName = TASK_ID_TABLE):
-    if taskType == None:
-        taskType="all"
-    if sortBy == None:
-        sortBy="default"
-    print(taskType)
-    print(sortBy)
-    conn = connectDB()
-    cur = conn.cursor()
-    query1= f"""
-    SELECT * FROM {tableName}
+from models import TASK_TABLE
+
+def fetchAll(taskType,sortBy):
+    # do the fetching type later 
+    # if taskType == None:
+    #     taskType="all"
+    # if sortBy == None:
+    #     sortBy="task_deadline"
+    # print(taskType)
+    # print(sortBy)
+    # conn = connectDB()
+    # cur = conn.cursor()
+    # query1= f"""
+    # SELECT * FROM {TASK_ID_TABLE}
     
-    """
-    if taskType !="all":
-        query1 += f"""
-        WHERE `{taskType}`= "{session.get("username")}"
-        """
-    if sortBy !="default":
-        query1+=f"ORDER BY `{sortBy}` DESC"
-    cur.execute(query1)
-    output = cur.fetchall()
+    # """
+    # if taskType !="all":
+    #     query1 += f"""
+    #     WHERE `{taskType}`= "{session.get("username")}"
+    #     """
+    # if sortBy !="default":
+    #     query1+=f"ORDER BY `{sortBy}` DESC"
+    # cur.execute(query1)
+    # output = cur.fetchall()
+
+    # temporary fixed: getting all the tasks
+    output = TASK_TABLE.query.all()
+    print(output)
     return output
