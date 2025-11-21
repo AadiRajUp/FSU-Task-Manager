@@ -6,7 +6,6 @@ from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
 from extensions import db,migrate
-from sqlalchemy.orm import DeclarativeBase
 from archive import archive_bp
 
 from models import *
