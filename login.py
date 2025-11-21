@@ -33,6 +33,7 @@ def login():
 
         elif len(output) == 1:
             session["username"]= username
+            session['role'] = output[0][3] 
             return redirect(url_for('index'))
             
         else:

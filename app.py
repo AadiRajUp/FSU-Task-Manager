@@ -33,6 +33,13 @@ def form():
     if not session.get("username"):
         return redirect(url_for('auth.login'))
     #session.permanent= True
+
+    # strictly a temporary fix to allow only Aadi and Swoyam to post tasks
+    # later will be added to a new table with admins and subadmin capabilities
+    print(session.get("role"))
+    if  session.get("role")  not in ["Admin"]:
+        return "You are not authorized to post a task."
+    
     return render_template('form.html',user_name=session.get("username"))
 
 @app.route('/login')
