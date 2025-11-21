@@ -1,6 +1,7 @@
 from flask import Blueprint,request, render_template
 from connect import ARCHIVE_TABLE
 from fetch_task import fetchAll
+
 completed_bp = Blueprint("completed",__name__)
 
 @completed_bp.route("/showCompletedTask")
