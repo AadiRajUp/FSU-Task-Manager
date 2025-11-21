@@ -55,8 +55,11 @@ app.register_blueprint(archive_bp)
 ########
 # Hey adding some sample user these are dummy unc #
 #######
-tests= [ UID(username="Meyan",password="Meyan123",role="admin"),
-    TASK_TABLE(task_name="Sample Task")]
+tests= [ 
+        UID(username="Meyan",password="Meyan123",role="admin"),
+        TASK_TABLE(task_name="Sample Task")
+    ]
+
 with app.app_context():
     db.create_all()
 
