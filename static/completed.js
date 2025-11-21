@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
         const contentHolder = document.getElementById('contentHolder');
         const data = outputData();
-        localStorage.setItem("Data",JSON.stringify(data));
-        console.log(data);
         function loadAllData(){
             contentHolder.innerHTML="";
             for(let i =0 ;i<data.length;i++){
@@ -12,29 +10,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>-${data[i][2]}</h3>
                 </div>
                 <div class="progressBar">
-                    <div class="progress" style="width:${data[i][8]}%;"></div>
+                    <div class="progress" style="width:${100}%;"></div>
                 </div>
-                <div class="numericData">
-                    <h6>${data[i][4]}</h6>
-                    <h6>${data[i][7]}</h6>
+                <div class="peopleDetails">
+                    <div class="assignedBy">Assigned By: ${data[i][3]}</div>
                 </div>
                 <div class="extraContent">
                     <hr>
                     <div>
                         <div class="taskDetails">
-                            <p>Task Description: ${data[i][5]}</p>
-                            <p>Progress: ${data[i][6]}</p>
-                            <p>Remaining: ${data[i][7]}</p>
-                        </div>
-                        <div class="peopleDetails">
-                            <div class="peopleWorking">People Working: ${data[i][9]}</div>
-                            <div class="assignedBy">Assigned By: ${data[i][3]}</div>
+                            <p>Task Description: ${data[i][4]}</p>
+                            <p>Progress: Finished</p>
                         </div>
                     </div>
                     <div class="ButtonHolder">
                             <button type="button" class="deleteButton" onclick="deleteData(${i},${data[i][0]})">Delete</button>
-                            <button type="button" class="finishButton" onclick="finishData(${i},${data[i][0]})">Finished</button>
-                            <button type="button" class="editButton" onclick="editData(${i},${data[i][0]})">Edit</button>
                     </div>
                 </div>
             </div>`

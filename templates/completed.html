@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Task</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<body>
+      <div class="navbar">
+        <div class="logoAndTitleHolder">
+            <div class="logoHolder" onclick="document.location='{{url_for('index')}}'"></div>
+            <h1>FSU TASK TRACKER</h1>
+        </div>
+        <div class="userHolder">
+            <div class="profilePicHolder"></div>
+            <h4>Hello {{user_name}}!</h4>
+        </div>
+    </div>
+    <div class="body">
+        <div class="contentHolder" id="contentHolder">
+            <!-- JS will inject content here -->
+        </div>
+    </div>
+    
+</body>
+<script>
+    function outputData(){
+    return {{ client_data|tojson }};
+    }
+</script>
+<script src="{{ url_for('static', filename='completed.js') }}"></script>
+</html>

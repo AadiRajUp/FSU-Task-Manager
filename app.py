@@ -5,19 +5,14 @@ from task_handler import task_bp
 from login import login_bp
 from fetch_task import fetchAll
 from edit import edit_bp
-from extensions import db,migrate
 from archive import archive_bp
+from completed import completed_bp
 app = Flask(__name__)
 app.secret_key = "##&&#*#(@&123hello"
-
-
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 app.config["SESSION_PERMANENT"]= True
 app.config["SESSION_TYPE"]='filesystem'
 app.config["PERMANENT_SESSION_LIFETIME"]= timedelta(seconds=200)
 Session(app)
-db.init_app(app)
-migrate.init_app(app,db)
 
 
 @app.route('/')
@@ -28,8 +23,7 @@ def index():
     task_type = request.args.get('task_type')
     sort_by= request.args.get('sort_by')
     output = fetchAll(task_type,sort_by)
-
-    return render_template('index.html',client_data = output,user_name = session.get("username"),role=session.get('role'))
+    return render_template('index.html',client_data = output,user_name = session.get("username"))
 
 @app.route('/form')
 def form():
@@ -40,11 +34,13 @@ def form():
 @app.route('/login')
 def login():
     return render_template('login.html')
-
+@app.route('/completed')
+def completed():
+    return render_template('completed.html')
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
 app.register_blueprint(archive_bp)
+app.register_blueprint(completed_bp)
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
-    
