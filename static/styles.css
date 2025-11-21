@@ -6,14 +6,19 @@
     }
     body{
         margin: 0;
+        overflow: hidden;
     }
     .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         height: 12dvh;
         width: 100dvw;
         background-color: white;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .logoHolder {
         height: 10dvh;
@@ -46,76 +51,98 @@
         border-radius: 50%;
     }
     .sortHolder{
-      display: flex;
-      height:5dvh;
-      justify-content: space-around;
-      align-items: center;
+        display: flex;
+        height: 7dvh;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 0 2rem;
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 12dvh;
+        z-index: 999;
+    }
+
+    .sortHolder .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .sortHolder .filter-group i {
+        color: #666;
+        font-size: 16px;
     }
 
     .sortHolder select{
-    padding: 3px;
-    border: 2px solid #ddd;
-    border-radius: 3px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 20px;
-  }
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: white;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+    }
  
-.sortHolder select:focus{
-outline: none;
-    border-color: #3498db;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
-    transform: translateY(-2px);
-}
-.sortHolder button {
-    background: linear-gradient(135deg, #278eae, hsl(239, 63%, 49%));
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-}
+    .sortHolder select:focus{
+        outline: none;
+        border-color: #27ae60;
+    }
 
-.sortHolder button:hover {
-    background: linear-gradient(135deg, #228799, #2927ae);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-}
+    .sortHolder .sort-btn {
+        background-color: #27ae60;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
 
-.sortHolder button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
-}
+    .sortHolder .sort-btn:hover {
+        background-color: #1e8449;
+    }
+
+    .sortHolder .sort-btn:active {
+        background-color: #196f3d;
+    }
+
+    .sortHolder .sort-btn i {
+        font-size: 13px;
+    }
 
     .body {
         overflow: hidden;
         display: flex;
-        height: 83dvh;
+        height: 81dvh;
         width: 100dvw;
         background-color: #EDEDED;
     }
     .contentHolder {
         height: 100%;
-        width: 95dvw;
-        overflow-y: scroll;
-    /*border: 1px solid #ccc;*/
+        width: calc(100% - 80px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #ccc transparent;
     }
     .contentHolder::-webkit-scrollbar {
-        display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+        width: 6px;
+    }
+    .contentHolder::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .contentHolder::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 3px;
+    }
+    .contentHolder::-webkit-scrollbar-thumb:hover {
+        background: #999;
     }
     .body .contentHolder .contentBox{
         margin: 2dvh 2dvw;
@@ -173,25 +200,66 @@ outline: none;
         flex-direction: column;
         justify-content: flex-end;
         height: 100%;
-        width: 5dvw;
-        border: 1px solid #ccc;
+        width: 80px;
+        background-color: #f5f5f5;
+        border-left: 1px solid #ddd;
     }
+    
     .body .sidebar .buttons {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: auto;
-        margin-bottom: 2dvh;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
     }
-    .body .sidebar .buttons .add {
-        height: 5dvh;
-        width: 5dvh;
+    
+    .body .sidebar .buttons button {
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
-        font-size: 5dvh;
-        background-color: rgb(83, 210, 248);
-        color: white;
+        font-size: 18px;
         border: none;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .body .sidebar .buttons .add {
+        background-color: #27ae60;
+        color: white;
+    }
+    
+    .body .sidebar .buttons .add:hover {
+        background-color: #1e8449;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .body .sidebar .buttons .add:active {
+        transform: translateY(-1px) scale(1.02);
+    }
+    
+    .body .sidebar .buttons .archive {
+        background-color: #7f8c8d;
+        color: white;
+    }
+    
+    .body .sidebar .buttons .archive:hover {
+        background-color: #5d6d7e;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .body .sidebar .buttons .archive:active {
+        transform: translateY(-1px) scale(1.02);
+    }
+    
+    .body .sidebar .buttons button i {
+        font-size: 20px;
     }
     
 
