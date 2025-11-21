@@ -46,7 +46,9 @@ def form():
 @app.route('/login')
 def login():
     return render_template('login.html')
-
+@app.route('/completed')
+def completed():
+    return render_template('completed.html')
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
