@@ -30,4 +30,5 @@ def archiveTask():
     conn.commit()
     cur.close()
     conn.close()
+    
     return redirect(url_for("index"))
