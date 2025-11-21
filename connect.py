@@ -1,11 +1,11 @@
 import pymysql
 DB_NAME = "FSU_TASK_TRACKER_DB"
-USER_ID_TABLE = "UID_TABLE" 
-TASK_ID_TABLE = "TASK_TABLE"
+USER_ID_TABLE = "uid_table" 
+TASK_ID_TABLE = "task_table"
 ARCHIVE_TABLE = "task_archive"
-
+import sqlite3
 def connectDB():
-    conn = pymysql.connect(host="localhost",user="root", password="",database=DB_NAME)
+    conn = sqlite3.connect('database.sqlite')
     if conn:
         return conn
     else:

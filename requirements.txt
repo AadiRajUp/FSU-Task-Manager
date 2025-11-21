@@ -1,5 +1,0 @@
-flask
-Flask-SQLAlchemy
-Flask-Session
-bcrypt
-flask-migrate
