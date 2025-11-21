@@ -47,64 +47,14 @@
     }
     .sortHolder{
       display: flex;
-      height:5dvh;
-      justify-content: space-around;
-      align-items: center;
+      background-color: #EEEEEE;
+      height:3dvh;
+
     }
-
-    .sortHolder select{
-    padding: 3px;
-    border: 2px solid #ddd;
-    border-radius: 3px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 20px;
-  }
- 
-.sortHolder select:focus{
-outline: none;
-    border-color: #3498db;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
-    transform: translateY(-2px);
-}
-.sortHolder button {
-    background: linear-gradient(135deg, #278eae, hsl(239, 63%, 49%));
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-}
-
-.sortHolder button:hover {
-    background: linear-gradient(135deg, #228799, #2927ae);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-}
-
-.sortHolder button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
-}
-
     .body {
         overflow: hidden;
         display: flex;
-        height: 83dvh;
+        height: 85dvh;
         width: 100dvw;
         background-color: #EDEDED;
     }

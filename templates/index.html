@@ -10,7 +10,7 @@
 <body>
     <div class="navbar">
         <div class="logoAndTitleHolder">
-            <div class="logoHolder" onclick="document.location='{{url_for('index')}}'"></div>
+            <div class="logoHolder"></div>
             <h1>FSU TASK TRACKER</h1>
         </div>
         <div class="userHolder" onclick="document.location='{{url_for('login')}}'">
@@ -35,7 +35,7 @@
                 <option value="task_percentage">Percentage Finished</option>
             </select>
         </div>
-        <button type="button" onclick="sortData()">Sort</button>
+        <button type="button" onclick="sortData()">sort</button>
     </div>
     <div class="body">
         <div class="contentHolder" id="contentHolder">
@@ -44,7 +44,6 @@
         <div class="sidebar">
             <div class="buttons">
                 <button class="add" type="button" onclick="document.location='{{url_for('form')}}'">+</button>
-                <button class="archive add" type="button" onclick="document.location='{{url_for('completed.showCompletedTask')}}'">O</button>
             </div>
         </div>
     </div>

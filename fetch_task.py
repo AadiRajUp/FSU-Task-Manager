@@ -2,20 +2,17 @@ from flask import session
 from flask import Blueprint
 from connect import connectDB
 from connect import DB_NAME,TASK_ID_TABLE, USER_ID_TABLE
-from models import TASK_TABLE
-
 def fetchAll(taskType,sortBy):
-    # do the fetching type later 
-    # if taskType == None:
-    #     taskType="all"
-    # if sortBy == None:
-    #     sortBy="task_deadline"
-    # print(taskType)
-    # print(sortBy)
-    # conn = connectDB()
-    # cur = conn.cursor()
-    # query1= f"""
-    # SELECT * FROM {TASK_ID_TABLE}
+    if taskType == None:
+        taskType="all"
+    if sortBy == None:
+        sortBy="task_deadline"
+    print(taskType)
+    print(sortBy)
+    conn = connectDB()
+    cur = conn.cursor()
+    query1= f"""
+    SELECT * FROM {TASK_ID_TABLE}
     
     # """
     # if taskType !="all":

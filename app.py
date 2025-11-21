@@ -7,11 +7,6 @@ from fetch_task import fetchAll
 from edit import edit_bp
 from extensions import db,migrate
 from archive import archive_bp
-
-from models import *
-
-
-
 app = Flask(__name__)
 app.secret_key = "##&&#*#(@&123hello"
 
@@ -45,32 +40,11 @@ def form():
 @app.route('/login')
 def login():
     return render_template('login.html')
-@app.route('/completed')
-def completed():
-    return render_template('completed.html')
+
 app.register_blueprint(task_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(edit_bp)
 app.register_blueprint(archive_bp)
-
-########
-# Hey adding some sample user these are dummy unc #
-#######
-tests= [ UID(username="Meyan",password="Meyan123",role="admin"),
-    TASK_TABLE(task_name="Sample Task")]
-with app.app_context():
-    db.create_all()
-
-    for item in tests:
-        try:
-            db.session.add(item)
-            # db.session.add(t)
-            db.session.commit()
-        except Exception as e:  # if alreay add
-            print (e)
-            db.session.rollback()
-            continue
-
 if __name__ == "__main__":
     app.run(debug=True,port=8000)
     
