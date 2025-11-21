@@ -1,4 +1,4 @@
-from flask import Blueprint,request,redirect,url_for
+from flask import Blueprint,request,redirect,url_for,session
 from connect import connectDB,TASK_ID_TABLE,ARCHIVE_TABLE
 
 archive_bp = Blueprint("archive",__name__)
@@ -6,9 +6,25 @@ archive_bp = Blueprint("archive",__name__)
 
 @archive_bp.route("/archiveTask")
 def archiveTask():
+    task_id_db= request.args.get('task_id_db')
+
+       # get the task assigned to from the db
+    query = f'''
+        SELECT * FROM {TASK_ID_TABLE}
+        WHERE `task_id` = {task_id_db}
+        '''
+    
     conn = connectDB()
     cur = conn.cursor()
-    task_id_db= request.args.get('task_id_db')
+    cur.execute(query)
+    output = cur.fetchall()
+
+    if output[0][3] != session["username"]:
+            return "You are not authorized to edit this task."
+
+    conn = connectDB()
+    cur = conn.cursor()
+
     query1 = f"""
     SELECT * FROM {TASK_ID_TABLE}
     WHERE `task_id` = {task_id_db}
@@ -30,5 +46,5 @@ def archiveTask():
     conn.commit()
     cur.close()
     conn.close()
-    
+
     return redirect(url_for("index"))

@@ -37,8 +37,22 @@ def postTask():
 
 @task_bp.route("/deleteTask")
 def deleteTask():
-
     task_id_db= request.args.get('task_id_db')
+
+    # get the task assigned to from the db
+    query = f'''
+        SELECT * FROM {TASK_ID_TABLE}
+        WHERE `task_id` = {task_id_db}
+        '''
+    
+    conn = connectDB()
+    cur = conn.cursor()
+    cur.execute(query)
+    output = cur.fetchall()
+
+    if output[0][3] != session["username"]:
+            return "You are not authorized to edit this task."
+
     conn= connectDB()
     cur= conn.cursor()
 
