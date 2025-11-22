@@ -27,7 +27,7 @@ def index():
     sort_by= request.args.get('sort_by')
     search_key = request.args.get('search_key')
     output = fetchAll(task_type,sort_by, search_key)
-    return render_template('index.html',client_data = output,user_name = session.get("username"))
+    return render_template('index.html',client_data = output,user_name = session.get("username"),role=session.get('role'))
 
 @app.route('/form')
 def form():

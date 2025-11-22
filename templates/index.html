@@ -50,9 +50,11 @@
         </div>
         <div class="sidebar">
             <div class="buttons">
+                {% if role == 'Admin' %}
                 <button class="add" type="button" onclick="document.location='{{url_for('form')}}'" title="Add New Task">
                     <i class="fas fa-plus"></i>
                 </button>
+                {% endif %}
                 <button class="archive" type="button" onclick="document.location='{{url_for('completed.showCompletedTask')}}'" title="View Completed">
                     <i class="fas fa-archive"></i>
                 </button>
