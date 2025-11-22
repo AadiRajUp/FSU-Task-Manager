@@ -20,6 +20,9 @@
         </div>
     </div>
     <div class="sortHolder">
+        <div class="searchBar">
+            <input type="text" name="searchKey" id="searchKey" placeholder="Search tasks..." onchange="searchBy()">
+        </div>
         <div class="filter-group">
             <i class="fas fa-filter"></i>
             <select name="taskType" id="taskType">
@@ -77,6 +80,10 @@
         const sortBy = document.getElementById("sortBy").value;
         console.log("Sorting by:", sortBy, "Task type:", taskType);
         document.location=`{{url_for('index')}}?task_type=${taskType}&sort_by=${sortBy}`;
+    }
+    function searchBy(){
+        const searchKey = document.getElementById("searchKey").value;
+        document.location=`{{url_for('index')}}?search_key=${searchKey}`;
     }
 </script>
 <script src="{{url_for('static', filename='script.js')}}"></script>

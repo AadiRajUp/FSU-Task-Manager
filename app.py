@@ -25,7 +25,8 @@ def index():
     #session.permanent=True
     task_type = request.args.get('task_type')
     sort_by= request.args.get('sort_by')
-    output = fetchAll(task_type,sort_by)
+    search_key = request.args.get('search_key')
+    output = fetchAll(task_type,sort_by, search_key)
     return render_template('index.html',client_data = output,user_name = session.get("username"))
 
 @app.route('/form')
