@@ -4,6 +4,7 @@ from connect import connectDB,TASK_ID_TABLE
 edit_bp = Blueprint("edit",__name__)
 
 
+
 @edit_bp.route("/edit",methods=["GET","POST"])
 def edit():
     task_id = request.args.get('task_id')

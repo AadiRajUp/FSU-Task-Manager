@@ -64,6 +64,10 @@
     function outputData(){
     return {{ client_data|tojson }};
     }
+
+    function getUsername(){
+        return "{{ user_name}}";
+    }
     function editData(i,j){
         document.location= `{{url_for('edit.edit')}}?task_id=${i}&task_id_db=${j}`;
     }
@@ -88,7 +92,11 @@
 </script>
 <script src="{{url_for('static', filename='script.js')}}"></script>
 
-<script>
-       
-</script>
+
+<!-- for hiding different buttons according to the user role and name -->
+
+
+     
+
+
 </html>
