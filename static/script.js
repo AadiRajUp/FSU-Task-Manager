@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
         const contentHolder = document.getElementById('contentHolder');
         const data = outputData();
-        localStorage.setItem("Data",JSON.stringify(data));
+        // localStorage.setItem("Data",JSON.stringify(data));
         console.log(data);
         username = getUsername();
         function loadAllData(){

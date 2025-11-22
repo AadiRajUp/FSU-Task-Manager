@@ -22,7 +22,6 @@ Session(app)
 def index():
     if not session.get("username"):
         return redirect(url_for('auth.login'))
-    #session.permanent=True
     task_type = request.args.get('task_type')
     sort_by= request.args.get('sort_by')
     search_key = request.args.get('search_key')
